@@ -212,7 +212,7 @@ class Upload(Command):
         )
 
     async def execute(self):
-        self.upload()
+        await self.upload()
 
     def get_filepath(self):
         files = self.args.file
@@ -223,28 +223,27 @@ class Upload(Command):
             return files[0]
 
     @staticmethod
-    def _conclude_operation_while_logging(task, title):
+    async def _conclude_operation_while_logging(task, title):
         try:
             with ProgressLogger(title) as progress_logger:
                 result = None
                 while not result:
                     status, result = task.next_chunk()
                     if status:
-                        progress = Progress(status.resumable_progress, status.total_size)
-                        progress_logger.send(progress)
+                         await progress_logger.log_progress(Progress(status.resumable_progress, status.total_size))
                 return result
         except BaseException as err:
             print('\x1b[2K', end='\r')
             print(f'An error happened while running operation {title}')
             logger.d(err)
 
-    def upload(self):
+    async def upload(self):
         try:
             filepath = self.get_filepath()
             mimetype = guess_mimetype(filepath)
             upload_task = self.google.upload(filepath, mimetype)
             print("Uploading 0%", end='\r')
-            response = self._conclude_operation_while_logging(upload_task, "Uploading")
+            response = await self._conclude_operation_while_logging(upload_task, "Uploading")
             if not response:
                 return
             print("Upload finished.")

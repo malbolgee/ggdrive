@@ -128,9 +128,9 @@ class ProgressLogger:
     async def _work(self):
         """Print logs while the channel is open and receiving values, or closed, but still has items."""
         async for progress in self._channel:
-            self._log_progress(progress)
+            await self.log_progress(progress)
 
-    def _log_progress(self, progress: Progress):
+    async def log_progress(self, progress: Progress):
         """Print log from status."""
         current_size, total_size, percentage = progress
         elapsed_time = time.time() - self._start_time

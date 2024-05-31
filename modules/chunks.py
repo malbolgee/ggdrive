@@ -44,8 +44,8 @@ class Chunk:
     _task_really_finished: Event = field(init=False)
 
     def __post_init__(self):
-        self._download_interrupted = Event(loop=self.loop)
-        self._task_really_finished = Event(loop=self.loop)
+        self._download_interrupted = Event()
+        self._task_really_finished = Event()
         self._task = self.loop.run_in_executor(self.executor, self.download)
 
     @staticmethod

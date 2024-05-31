@@ -1,15 +1,14 @@
 <p align="center">
-    <a href="https://github.com/DiscordTime/ggdrive/actions/workflows/main.yml">
-        <img alt="CI" src="https://github.com/DiscordTime/ggdrive/actions/workflows/main.yml/badge.svg" /></a>
+    <a href="https://github.com/malbolgee/ggdrive/actions/workflows/main.yml">
+        <img alt="CI" src="https://github.com/malbolgee/ggdrive/actions/workflows/main.yml/badge.svg" /></a>
     <a href="https://www.python.org/">
-        <img alt="PyPI - Python Version" src="https://img.shields.io/pypi/pyversions/ggdrive" /></a>
+        <img alt="Python Version" src="https://img.shields.io/badge/python-_%3E_3.10-blue" /></a>
     <a href="#">
-        <img alt="Code size" src="https://img.shields.io/github/languages/code-size/DiscordTime/ggdrive" /></a>
-    <a href="https://github.com/DiscordTime/ggdrive/blob/master/LICENSE">
-        <img alt="License" src="https://img.shields.io/pypi/l/ggdrive" /></a>
-    <a href="https://pypi.org/project/ggdrive/">
-        <img alt="Version" src="https://img.shields.io/pypi/v/ggdrive" /></a>
+        <img alt="Code size" src="https://img.shields.io/github/languages/code-size/malbolgee/ggdrive" /></a>
+    <a href="https://github.com/malbolgee/ggdrive/blob/master/LICENSE">
+        <img alt="License" src="https://img.shields.io/github/license/malbolgee/ggdrive" /></a>
 </p>
+
 
 # ggdrive
 
@@ -29,29 +28,15 @@ The first time you're executing this, a Google page will open and ask for your a
 
 ## Installation
 
-### Install through pip (recommended)
-
-```shell
-python3 -m pip install ggdrive
-```
-
-That's it! You can advance to [Usage](#usage)
-
-### ... Or install manually
-
 This project requires:
 
-1. Python 3.6 or greater.
+1. Python 3.10 or greater.
 2. Google Client Library
 
 #### 1. Clone this repository
 
  ```sh
- git clone git@github.com:DiscordTime/ggdrive.git
- ```
- or
- ```sh
- git clone https://github.com/DiscordTime/ggdrive.git
+ git clone https://github.com/malbolgee/ggdrive.git
  ```
 
 #### 2. Install dependencies
@@ -61,11 +46,6 @@ We created a `requirements.txt` where you can execute the following to install t
 ```sh
 pip install --upgrade -r requirements.txt
 ```
-or
-```sh
-python3 -m pip install --upgrade -r requirements.txt
-```
-
 #### 3. If the script gdrive doesn't have execution permission, give it to it.
 
  ```sh
@@ -138,7 +118,7 @@ gdrive download --last --extract
 
 **NOTE**
 
-The ***extract*** function needs some extra programs to execute. We implement a mechanism that tries to guess the extension of the file you're downloading and use the program you define to extract it. So, the first time you try to download a file of a certain type, when it's time to extract the file, our program will ask you which program you want to choose. After that, if you download a file with this same extension, it will extract it automatically (if you added the ***--extract*** option).
+The ***extract*** function needs some extra programs to execute. We implemented a mechanism that tries to guess the extension of the file you're downloading and uses the program you define to extract it. So, the first time you try to download a file of a certain type, ggdrive will ask you which program you want to use to extract the file. After that, if you download a file with the same extension, it will extract it automatically (if you added the ***--extract*** option).
 
 Those configurations are located with your other files that we need in the *.gdrive* in your *HOME* directory. The file is called ***data_config.json***
 
